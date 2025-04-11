@@ -12,9 +12,9 @@ Please submit any issues you found. Contribution and suggestions are warmly welc
 
 ## Setting Recommendation
 
-It is recommended not to use `Fill` size flag for both vertical and horizontal direction for children under `Animated Box Container`. Using it will have incorrect animation set for all children, causing unexpected behaviors.
+It is recommended not to use `Fill` size flag for both vertical and horizontal directions for children under `Animated Box Container`. Using it will have incorrect animation set for all children, causing unexpected behaviors.
 
-Using `Animated Box Container` together with [Animated Panel Container](https://github.com/GramineaGroup/animated_panel_container_cs) is recommended as we have special variable in `Animated Panel Container` for `Animated Box Container` to know the final size of any `Animated Panel Container` children.
+Using `Animated Box Container` together with [Animated Panel Container](https://github.com/GramineaGroup/animated_panel_container_cs) is recommended as we have a special variable in `Animated Panel Container` for `Animated Box Container` to know the final size of any `Animated Panel Container` children.
 
 ## Demo
 
