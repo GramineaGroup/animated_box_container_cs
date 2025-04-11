@@ -1,0 +1,189 @@
+[gd_scene load_steps=13 format=3 uid="uid://bo6l162g757px"]
+
+[ext_resource type="Theme" uid="uid://dicxmbke0imcl" path="res://scenes/Theme.tres" id="1_dxbve"]
+[ext_resource type="Script" uid="uid://dqix7f0bt6amw" path="res://scenes/cross/horizontal.gd" id="2_mi2no"]
+[ext_resource type="Texture2D" uid="uid://o1ln7v6iuk5v" path="res://icons/close.svg" id="3_k7hel"]
+[ext_resource type="Script" uid="uid://c1thn6nufciqn" path="res://addons/animated_panel_container_cs/AnimatedPanelContainer.cs" id="4_jxngj"]
+[ext_resource type="Script" uid="uid://baq0s21kyjgya" path="res://addons/animated_box_container_cs/AnimatedBoxContainer.cs" id="4_vvyh4"]
+[ext_resource type="Texture2D" uid="uid://dgknwv7v86hcn" path="res://icons/Under.svg" id="5_bhp70"]
+[ext_resource type="Texture2D" uid="uid://dsqxfi7ehknxi" path="res://icons/Progress.svg" id="6_upoy4"]
+[ext_resource type="Texture2D" uid="uid://dunatko0dk4n3" path="res://icons/TwitterLogo.svg" id="7_0s7r2"]
+[ext_resource type="Texture2D" uid="uid://drgo2kfcvo2qo" path="res://icons/Arrow_Left.svg" id="8_n4avl"]
+[ext_resource type="Texture2D" uid="uid://deu4a4e63ffys" path="res://icons/Arrow_Right.svg" id="9_jepq1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bibmp"]
+bg_color = Color(0.4, 0.388, 0.365, 0.2)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="FontVariation" id="FontVariation_c4vo5"]
+
+[node name="Horizontal" type="PanelContainer"]
+offset_right = 943.0
+offset_bottom = 628.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("1_dxbve")
+theme_type_variation = &"Test"
+script = ExtResource("2_mi2no")
+metadata/_custom_type_script = "uid://c1thn6nufciqn"
+
+[node name="AnimatedBoxContainer" type="Container" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1058, 339)
+layout_mode = 2
+script = ExtResource("4_vvyh4")
+ContainerDirection = 1
+metadata/_custom_type_script = "uid://baq0s21kyjgya"
+
+[node name="TopMarginContainer" type="MarginContainer" parent="AnimatedBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("1_dxbve")
+theme_type_variation = &"TopMarginContainer"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AnimatedBoxContainer/TopMarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="AnimatedBoxContainer/TopMarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+
+[node name="CloseButton" type="Button" parent="AnimatedBoxContainer/TopMarginContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_bibmp")
+icon = ExtResource("3_k7hel")
+icon_alignment = 1
+
+[node name="ProgressBarMarginContainer" type="MarginContainer" parent="AnimatedBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_dxbve")
+theme_type_variation = &"ProgressBarMarginContainer"
+
+[node name="ProgressBar" type="TextureProgressBar" parent="AnimatedBoxContainer/ProgressBarMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+value = 75.0
+fill_mode = 4
+texture_under = ExtResource("5_bhp70")
+texture_progress = ExtResource("6_upoy4")
+texture_progress_offset = Vector2(5, 5)
+
+[node name="IconMarginContainer" type="MarginContainer" parent="AnimatedBoxContainer/ProgressBarMarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_dxbve")
+theme_type_variation = &"IconMarginContainer"
+
+[node name="TextureRect" type="TextureRect" parent="AnimatedBoxContainer/ProgressBarMarginContainer/IconMarginContainer"]
+layout_mode = 2
+texture = ExtResource("7_0s7r2")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="CenterMarginContainer" type="MarginContainer" parent="AnimatedBoxContainer"]
+custom_minimum_size = Vector2(394, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_dxbve")
+theme_type_variation = &"CenterMarginContainer"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AnimatedBoxContainer/CenterMarginContainer"]
+layout_mode = 2
+
+[node name="ContentLabelContainer" type="PanelContainer" parent="AnimatedBoxContainer/CenterMarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("4_jxngj")
+
+[node name="ContentLabelMarginContainer" type="MarginContainer" parent="AnimatedBoxContainer/CenterMarginContainer/VBoxContainer/ContentLabelContainer"]
+layout_mode = 2
+theme = ExtResource("1_dxbve")
+theme_type_variation = &"ContentLabelMarginContainer"
+
+[node name="ContentLabel" type="Label" parent="AnimatedBoxContainer/CenterMarginContainer/VBoxContainer/ContentLabelContainer/ContentLabelMarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 24
+theme_override_font_sizes/font_size = 16
+text = "Hello World"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AnimatedBoxContainer/CenterMarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="LeftButtonPanelContainer" type="PanelContainer" parent="AnimatedBoxContainer/CenterMarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("4_jxngj")
+
+[node name="LeftButton" type="Button" parent="AnimatedBoxContainer/CenterMarginContainer/VBoxContainer/HBoxContainer/LeftButtonPanelContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_dxbve")
+theme_type_variation = &"ActionButton"
+icon = ExtResource("8_n4avl")
+icon_alignment = 1
+
+[node name="ExpandButton" type="Button" parent="AnimatedBoxContainer/CenterMarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_dxbve")
+theme_type_variation = &"ExpandButton"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_c4vo5")
+theme_override_font_sizes/font_size = 36
+text = "Expand"
+
+[node name="RightButtonPanelContainer" type="PanelContainer" parent="AnimatedBoxContainer/CenterMarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("4_jxngj")
+
+[node name="RightButton" type="Button" parent="AnimatedBoxContainer/CenterMarginContainer/VBoxContainer/HBoxContainer/RightButtonPanelContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_dxbve")
+theme_type_variation = &"ActionButton"
+icon = ExtResource("9_jepq1")
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="AnimatedBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Awesome Godot"
+
+[node name="BottomMarginContainer" type="MarginContainer" parent="AnimatedBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_dxbve")
+theme_type_variation = &"BottomMarginContainer"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AnimatedBoxContainer/BottomMarginContainer"]
+layout_mode = 2
+
+[node name="CollapseButton" type="Button" parent="AnimatedBoxContainer/BottomMarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(91, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_dxbve")
+theme_type_variation = &"ActionButton"
+text = "Collapse"
+
+[connection signal="pressed" from="AnimatedBoxContainer/CenterMarginContainer/VBoxContainer/HBoxContainer/ExpandButton" to="." method="_on_expand_button_pressed"]
+[connection signal="pressed" from="AnimatedBoxContainer/BottomMarginContainer/VBoxContainer/CollapseButton" to="." method="_on_collapse_button_pressed"]
