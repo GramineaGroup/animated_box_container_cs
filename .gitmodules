@@ -1,0 +1,4 @@
+[submodule "addons/animated_panel_container_cs"]
+	path = addons/animated_panel_container_cs
+	url = https://github.com/GramineaGroup/animated_panel_container_cs.git
+	branch = release
