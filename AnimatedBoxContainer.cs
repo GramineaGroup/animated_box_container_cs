@@ -43,7 +43,6 @@ public partial class AnimatedBoxContainer : Container
         set
         {
             _direction = value;
-            UpdateMinimumSize();
             QueueSort();
         }
     }
@@ -94,6 +93,7 @@ public partial class AnimatedBoxContainer : Container
         switch ((long)what)
         {
             case NotificationSortChildren:
+                UpdateMinimumSize();
                 Resort();
                 break;
             case NotificationTranslationChanged:
@@ -101,7 +101,6 @@ public partial class AnimatedBoxContainer : Container
                 QueueSort();
                 break;
         }
-        UpdateMinimumSize();
     }
 
     /// <summary>
