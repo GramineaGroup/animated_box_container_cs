@@ -4,7 +4,7 @@
 
 This plugin will animate layout direction change in container.
 
-GDScrpit version is in development.
+Due to behavior differences related to `UpdateMinimumSize` in C# and `update_minimum_size` in GDScript, this plugin will not be make available in GDScript.
 
 **Important Notes: ** Please compile and reload the project first after enabling this plugin or before exporting the projecrt. We use hacks to bypass an C# plugin initization error in Godot.
 
@@ -35,3 +35,7 @@ https://github.com/user-attachments/assets/09a051e7-51b9-43ad-a26b-f022f9696270
 
 https://github.com/user-attachments/assets/3dd38ba8-d583-4ee8-8019-02139b501268
 
+
+### Behavior Difference
+It seems that Godot will call `Container.update_minimum_size` in GDScript for custom containers while the same behavior isn't observed in C#.
+At the same time, GDScript doesn't allow us to overwrite non-virtual built-in function, which make it impossible to achieve the same animation.

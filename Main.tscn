@@ -25,8 +25,8 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_uu6xs")
 
 [node name="SameLanguage" parent="PanelContainer" instance=ExtResource("1_glv2v")]
-visible = false
 layout_mode = 2
 
 [node name="CrossLanguage" parent="PanelContainer" instance=ExtResource("2_uu6xs")]
+visible = false
 layout_mode = 2
