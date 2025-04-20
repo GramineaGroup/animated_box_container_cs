@@ -33,6 +33,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(394, 605)
 layout_mode = 2
 script = ExtResource("4_066cj")
+DefaultTrans = 7
 metadata/_custom_type_script = "uid://baq0s21kyjgya"
 
 [node name="TopMarginContainer" type="MarginContainer" parent="AnimatedBoxContainer"]

@@ -33,6 +33,10 @@ public enum AnimatedBoxContainerDirection
 public partial class AnimatedBoxContainer : Container
 {
     [Export]
+    private Tween.TransitionType DefaultTrans;
+    [Export]
+    private Tween.EaseType DefaultEase;
+    [Export]
     public AnimatedBoxContainerDirection ContainerDirection
     {
         get { return _direction; }
@@ -77,6 +81,8 @@ public partial class AnimatedBoxContainer : Container
 
     public override void _EnterTree()
     {
+        _ease = DefaultEase;
+        _trans = DefaultTrans;
         MouseFilter = MouseFilterEnum.Pass;
     }
 
@@ -134,7 +140,7 @@ public partial class AnimatedBoxContainer : Container
                     else
                     {
                         stretchMin += size.X;
-                        msc.MinSize += size.X;
+                        msc.MinSize = size.X;
                         msc.WillStretch = c.SizeFlagsHorizontal.HasFlag(SizeFlags.Expand);
                     }
 
@@ -372,11 +378,7 @@ public partial class AnimatedBoxContainer : Container
             tween.TweenProperty(c, "position", r.Position, _currentDuration).From(c.Position).SetDelay(_delay);
             tween.Finished += () =>
             {
-                _tweenList.Remove(c);
-                if (_tweenList.Count == 0)
-                {
-                    _useTween = false;
-                }
+                OnTweenFinished(c);
             };
         }
 
@@ -445,11 +447,7 @@ public partial class AnimatedBoxContainer : Container
             tween.TweenProperty(this, "custom_minimum_size", minimum, _currentDuration).From(CustomMinimumSize).SetDelay(_delay);
             tween.Finished += () =>
             {
-                _tweenList.Remove(this);
-                if (_tweenList.Count == 0)
-                {
-                    _useTween = false;
-                }
+                OnTweenFinished(this);
             };
         }
         else
@@ -457,6 +455,17 @@ public partial class AnimatedBoxContainer : Container
             CustomMinimumSize = minimum;
         }
 
+    }
+
+    private void OnTweenFinished(Control c)
+    {
+        _tweenList.Remove(c);
+        if (_tweenList.Count == 0)
+        {
+            _useTween = false;
+            _ease = DefaultEase;
+            _trans = DefaultTrans;
+        }
     }
 
     public AnimatedBoxContainer SetDelay(double delay)
